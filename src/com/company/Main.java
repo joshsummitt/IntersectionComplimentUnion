@@ -24,19 +24,18 @@ public class Main
             String fileTwoLocation = args[2];
             Scanner readerTwo = new Scanner(new File(fileTwoLocation));
 
-            while(readerOne.hasNext())
+            while (readerOne.hasNext())
             {
                 String str = readerOne.nextLine();
                 fileOne.add(Integer.parseInt(str));
             }
 
-            while(readerTwo.hasNext())
+            while (readerTwo.hasNext())
             {
                 String str = readerTwo.nextLine();
                 fileTwo.add(Integer.parseInt(str));
             }
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             System.out.println("Error: " + e.getMessage());
         }
@@ -48,19 +47,22 @@ public class Main
 
     private static void run(String command, Set<Integer> fileOne, Set<Integer> fileTwo)
     {
-        switch(command)
+        switch (command)
         {
+            case "Intersection":
             case "intersection":
                 Set<Integer> intersection = calculateIntersection(fileOne, fileTwo);
                 System.out.println("Calculate of File One and File Two: " + intersection);
                 break;
+            case "Compliment":
             case "compliment":
                 Set<Integer> complimentFileOne = calculateCompliment(fileTwo, fileOne);
                 Set<Integer> complimentFileTwo = calculateCompliment(fileOne, fileTwo);
 
-                System.out.println("Complement of File One: " + complimentFileOne);
-                System.out.println("Complement of File Two: " + complimentFileTwo);
+                System.out.println("Complement of File One and File Two: " + complimentFileOne);
+                System.out.println("Complement of File Two and File One: " + complimentFileTwo);
                 break;
+            case "Union":
             case "union":
                 Set<Integer> union = calculateUnion(fileOne, fileTwo);
                 System.out.println("Union of File One and File Two: " + union);
